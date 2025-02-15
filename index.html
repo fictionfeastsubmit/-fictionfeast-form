@@ -6,21 +6,51 @@
     <title>Fiction Feast - Submit a Book</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
+            font-family: 'Brutal Type', sans-serif;
+            background-color: #ffffff;
+            color: #2a2a2a;
+            margin: 0;
+            padding: 0;
+        }
+        /* HEADER STYLES */
+        .header {
+            background-color: #d6d6d6;
             padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #990000;
+        }
+        .header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin-left: 15px;
+        }
+        .nav-bar {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-bar a {
+            text-decoration: none;
+            color: #2a2a2a;
+            font-weight: bold;
+        }
+        /* FORM STYLES */
+        .container {
             max-width: 500px;
             margin: auto;
-            background-color: #f9f9f9;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
         h2 {
             text-align: center;
-        }
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         label {
             font-weight: bold;
@@ -33,13 +63,13 @@
             border-radius: 5px;
         }
         button {
-            background: #007bff;
+            background: #990000;
             color: white;
             border: none;
             cursor: pointer;
         }
         button:hover {
-            background: #0056b3;
+            background: #750000;
         }
         .message {
             margin-top: 10px;
@@ -49,30 +79,44 @@
     </style>
 </head>
 <body>
-    <h2>Submit a Book to Fiction Feast</h2>
-    <form id="bookForm">
-        <label for="title">Book Title:</label>
-        <input type="text" id="title" required>
-        
-        <label for="author">Author:</label>
-        <input type="text" id="author" required>
-        
-        <label for="summary">Summary:</label>
-        <textarea id="summary" required></textarea>
-        
-        <label for="tags">Tags (comma-separated):</label>
-        <input type="text" id="tags">
-        
-        <label for="purchase">Purchase Links (comma-separated URLs):</label>
-        <input type="text" id="purchase">
-        
-        <label for="author_override">
-            <input type="checkbox" id="author_override"> I am the author of this book
-        </label>
-        
-        <button type="submit">Submit</button>
-    </form>
-    <p class="message" id="responseMessage"></p>
+    <div class="header">
+        <div style="display: flex; align-items: center;">
+            <img src="https://fictionfeast.tumblr.com/avatar" alt="Fiction Feast Avatar">
+            <h1>Fiction Feast</h1>
+        </div>
+        <nav class="nav-bar">
+            <a href="https://fictionfeast.tumblr.com">Home</a>
+            <a href="https://fictionfeast.tumblr.com/archive">Archive</a>
+            <a href="https://fictionfeast.tumblr.com/submit">Submit</a>
+        </nav>
+    </div>
+    
+    <div class="container">
+        <h2>Submit a Book</h2>
+        <form id="bookForm">
+            <label for="title">Book Title:</label>
+            <input type="text" id="title" required>
+            
+            <label for="author">Author:</label>
+            <input type="text" id="author" required>
+            
+            <label for="summary">Summary:</label>
+            <textarea id="summary" required></textarea>
+            
+            <label for="tags">Tags (comma-separated):</label>
+            <input type="text" id="tags">
+            
+            <label for="purchase">Purchase Links (comma-separated URLs):</label>
+            <input type="text" id="purchase">
+            
+            <label for="author_override">
+                <input type="checkbox" id="author_override"> I am the author of this book
+            </label>
+            
+            <button type="submit">Submit</button>
+        </form>
+        <p class="message" id="responseMessage"></p>
+    </div>
 
     <script>
         document.getElementById("bookForm").onsubmit = async function(event) {
