@@ -6,6 +6,7 @@
     <title>Fiction Feast - Submit a Book</title>
     <link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme11/theme11.min.css">
     <style>
+        /* Global Styles */
         body {
             font-family: 'Brutal Type', sans-serif;
             background-color: #ffffff;
@@ -13,49 +14,50 @@
             margin: 0;
             padding: 0;
         }
-        /* HEADER STYLES - Matches Tumblr */
+
+        /* Header Styling */
         .header {
-            background-color: #171e51;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
             padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 3px solid #990000;
+            border-bottom: 3px solid #171e51;
         }
-        .header-left {
-            display: flex;
-            align-items: center;
-        }
+
         .header img {
             width: 64px;
             height: 64px;
-            border-radius: 0%;
+            margin-right: 10px;
         }
+
         .header h1 {
-            font-size: 26px;
-            color: white;
-            margin-left: 15px;
+            font-size: 24px;
             font-family: Georgia, serif;
+            font-weight: bold;
+            color: #171e51;
+            margin: 0;
         }
+
+        /* Navigation Bar */
         .nav-bar {
-            display: flex;
-            gap: 15px;
             background-color: #171e51;
             padding: 10px;
-            width: 100%;
+            text-align: left;
         }
+
         .nav-bar a {
-            text-decoration: none;
             color: white;
-            font-weight: bold;
+            text-decoration: none;
             font-size: 16px;
-            padding: 8px 12px;
-            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 20px;
         }
+
         .nav-bar a:hover {
-            background-color: #990000;
+            text-decoration: underline;
         }
-        /* FORM STYLES (AO3-Inspired) */
+
+        /* Form Styling */
         .container {
             max-width: 750px;
             margin: auto;
@@ -65,16 +67,19 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
+
         h2 {
             text-align: center;
             border-bottom: 2px solid #990000;
             padding-bottom: 10px;
         }
+
         label {
             font-weight: bold;
             display: block;
             margin-top: 15px;
         }
+
         input, textarea, select {
             width: 100%;
             padding: 10px;
@@ -82,6 +87,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
         button {
             background: #990000;
             color: white;
@@ -92,80 +98,57 @@
             margin-top: 15px;
             font-size: 16px;
         }
+
         button:hover {
             background: #750000;
-        }
-        .collapsible {
-            background-color: #f4f4f4;
-            border: 1px solid #ccc;
-            padding: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            text-align: left;
-            width: 100%;
-            border-radius: 5px;
-            margin-top: 15px;
-        }
-        .collapsible-content {
-            display: none;
-            padding: 10px;
-            border-left: 3px solid #990000;
-            background: #fafafa;
         }
     </style>
 </head>
 <body>
+
+    <!-- Tumblr Header -->
     <div class="header">
-        <div class="header-left">
-            <img src="https://fictionfeast.tumblr.com/avatar" alt="Fiction Feast Avatar">
-            <h1>Fiction Feast</h1>
-        </div>
+        <img src="https://fictionfeast.tumblr.com/avatar" alt="Fiction Feast Avatar">
+        <h1>Fiction Feast</h1>
     </div>
+
+    <!-- Navigation Bar -->
     <nav class="nav-bar">
         <a href="https://fictionfeast.tumblr.com/ask">Ask me anything</a>
         <a href="https://fictionfeast.tumblr.com/random">Random</a>
         <a href="https://fictionfeast.tumblr.com/archive">Archive</a>
     </nav>
-    
+
+    <!-- Submission Form -->
     <div class="container">
         <h2>Submit a Book</h2>
         <form id="bookForm">
             <label for="title">Book Title:</label>
             <input type="text" id="title" required>
-            
+
             <label for="author">Author:</label>
             <input type="text" id="author" required>
-            
+
             <label for="summary">Summary:</label>
             <textarea id="summary" required></textarea>
-            
-            <label class="collapsible">Additional Information</label>
-            <div class="collapsible-content">
-                <label for="tags">Tags (comma-separated):</label>
-                <input type="text" id="tags">
-                
-                <label for="purchase">Purchase Links (comma-separated URLs):</label>
-                <input type="text" id="purchase">
-                
-                <label for="author_override">
-                    <input type="checkbox" id="author_override"> I am the author of this book
-                </label>
-            </div>
-            
+
+            <label for="tags">Tags (comma-separated):</label>
+            <input type="text" id="tags">
+
+            <label for="purchase">Purchase Links (comma-separated URLs):</label>
+            <input type="text" id="purchase">
+
+            <label>
+                <input type="checkbox" id="author_override"> I am the author of this book
+            </label>
+
             <button type="submit">Submit</button>
         </form>
         <p class="message" id="responseMessage"></p>
     </div>
 
+    <!-- JavaScript -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let coll = document.querySelector(".collapsible");
-            let content = document.querySelector(".collapsible-content");
-            coll.addEventListener("click", function() {
-                content.style.display = content.style.display === "block" ? "none" : "block";
-            });
-        });
-
         document.getElementById("bookForm").onsubmit = async function(event) {
             event.preventDefault();
             
@@ -188,9 +171,7 @@
             document.getElementById("responseMessage").innerText = result.message || "Submission failed.";
         };
     </script>
+
 </body>
 </html>
-
-
-
 
